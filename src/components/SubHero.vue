@@ -1,5 +1,5 @@
 <template>
-  <section id="inner-intro" class="inner-intro bg-image overlay-dark40 dark-bg parallax parallax-background2" v-bind:data-background-img="bgImage">
+  <section id="inner-intro" class="inner-intro bg-image portfolio-overlay dark-bg parallax parallax-background2" v-bind:data-background-img="bgImage" v-bind:style="styleObject">
     <div class="container">
       <div class="intro-content">
         <div class="intro-content-inner">
@@ -16,31 +16,24 @@
     props: ['title', 'subTitle', 'bgImage'],
 
     created: function () {
-      console.log('bgImage;?', this.bgImage)
+      console.log('bgImage?', this.bgImage)
+      this.setBgImage()
+    },
+
+    data () {
+      return {
+        styleObject: {}
+      }
     },
 
     methods: {
-      /*
-      // ----------------------------------------------------------------
-    // Backgrounds Image (Slider, Section, etc..)
-    // ----------------------------------------------------------------
-    var pageSection = $('.slide-bg-image, .bg-image');
-    pageSection.each(function (indx) {
-
-        if ($(this).attr("data-background-img")) {
-            $(this).css("background-image", "url(" + $(this).data("background-img") + ")");
+      setBgImage: function () {
+        console.log('setBgImage', this.bgImage)
+        this.styleObject = {
+          'background-image': 'url(' + this.bgImage + ')',
+          'border': '1px solid lime'
         }
-    });
-
-    // ----------------------------------------------------------------
-    // Intro Height
-    // ----------------------------------------------------------------
-    function int_introHeight() {
-        var windiwHeight = $(window).height();
-        // Intro Height
-        $('.js-fullscreen-height').css('height', windiwHeight);
-    };
-    */
+      }
     }
 
   }

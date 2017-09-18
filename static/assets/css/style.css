@@ -184,6 +184,13 @@ body {
         opacity: 0.5;
     }
 
+    .portfolio-overlay:before {
+      /*background-color: rgba(34,34,34,0.4);*/
+      /*background-color: rgba(175, 98, 98, 0.9);*/
+      background: linear-gradient(45deg, #9d383c, #262932);
+      opacity: 0.8;
+  }
+
     .overlay-dark60:before {
         background-color: rgba(34,34,34,0.6);
     }
