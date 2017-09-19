@@ -2,9 +2,9 @@
   <div class="portfolio-detail">
     
     <sub-hero 
-      title="" 
-      sub-title="" 
-      bg-image=""></sub-hero>
+      v-bind:title="item.name" 
+      v-bind:sub-title="item.description" 
+      v-bind:bg-image="item.photos[0].image_path"></sub-hero>
       
     <section class="section-padding">
       
@@ -12,15 +12,15 @@
       <div class="container">
           <div class="row">
               <!-- Poftfolio Item -->
-              <div class="col-md-6">
-                  <div class="portfolio-image-wrap" v-for="photo in item.photos">
-                      <img v-bind:src="'https://sitesbyjoe.com/' + photo.image_path" alt="image" />
+              <div class="col-md-7">
+                  <div class="portfolio-image-wrap" v-for="photo in item.photos" v-if="photo.image_path !== item.photos[0].image_path">
+                      <img v-bind:src="'https://sitesbyjoe.com/' + photo.image_path" alt="image" width="100%" />
                   </div>
               </div>
               <!-- End Poftfolio Item -->
 
               <!-- Poftfolio Content -->
-              <div class="col-md-6">
+              <div class="col-md-5">
                   <div class="portfolio-item-content">
                       <h1 class="alt-title">{{item.name}}</h1>
                       <div class="portfolio-item-content-spc">
@@ -32,21 +32,18 @@
                           <h5 class="alt-title">Project details</h5>
                           <ul class="portfolio-item-content-detail list-none">
                               <li>
-                                  <span class="text-bold">Client :</span> Apollo Template
+                                  <span class="text-bold">Tags :</span> {{item.tags}}
                               </li>
                               <li>
-                                  <span class="text-bold">Category :</span> Branding, Photography
+                                  <span class="text-bold">Date Created :</span> {{item.launch_date}}
                               </li>
                               <li>
-                                  <span class="text-bold">Date Created :</span> September 19 2016
-                              </li>
-                              <li>
-                                  <span class="text-bold">Website :</span> <a href="http://nileforest.com/" target="_blank">nileforest.com</a>
+                                  <span class="text-bold">Website :</span> {{item.url}}
                               </li>
                           </ul>
                       </div>
                       <div class="portfolio-item-content-spc">
-                          <a href="http://nileforest.com/" target="_blank" class="btn btn-black-outline btn-lg">Launch Project<i class="fa fa-external-link right"></i></a>
+                          <a v-bind:href="item.url" target="_blank" class="btn btn-black-outline btn-lg">Launch Website<i class="fa fa-external-link right"></i></a>
                       </div>
                   </div>
               </div>
@@ -56,31 +53,43 @@
       <!-- End Portfolio Detail -->
       
     </section>
-      
-              <!--<section class="section-padding bg-image overlay-dark40" data-stellar-background-ratio="0.4" data-background-img="img/full/07.jpg" >
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-              </section>-->
-              </div>
+
+  </div>
 </template>
 
 <script>
+  import SubHero from '@/components/SubHero.vue'
+
   export default {
+    components: {
+      SubHero
+    },
+
     data () {
       return {
-        item: {}
+        item: {
+          name: '',
+          description: '',
+          photos: [{
+            'image_path': ''
+          }],
+          launch_date: '',
+          url: ''
+        }
       }
     },
-    created: function () {
+
+    beforeCreate: function () {
       var api = 'https://sitesbyjoe.com/portfolio/api_detail/' + this.$route.params.slug
       this.axios({
         method: 'get',
         url: api
       }).then((response) => {
+        console.log('api call done', response.data, this)
         this.item = response.data
+        // console.log(this)
+        // console.log('THIS', this, 'THIS>ITEM', this.item)
+        // console.log('PortfolioDetail this.bgImage just set', this.item.photos[0].image_path)
       })
     }
   }

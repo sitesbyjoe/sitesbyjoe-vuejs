@@ -90,7 +90,7 @@ $(function () {
     function stickHeader() {
         var scrolled = $(window).scrollTop();
         var windHeight = $(window).height();
-        if (scrolled > 150) {
+        if (scrolled > 120) {
             $('.header').addClass('header-prepare');
         } else {
             $('.header').removeClass('header-prepare');

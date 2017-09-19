@@ -1,5 +1,5 @@
 <template>
-  <section id="inner-intro" class="inner-intro bg-image portfolio-overlay dark-bg parallax parallax-background2" v-bind:data-background-img="bgImage" v-bind:style="styleObject">
+  <section id="inner-intro" class="inner-intro bg-image overlay-dark40 portfolio-overlay dark-bg parallax parallax-background2" v-bind:style="'background-image: url(https://sitesbyjoe.com/' + bgImage + '); background-size:cover;'">
     <div class="container">
       <div class="intro-content">
         <div class="intro-content-inner">
@@ -16,19 +16,20 @@
     props: ['title', 'subTitle', 'bgImage'],
 
     created: function () {
-      console.log('bgImage?', this.bgImage)
-      this.setBgImage()
+      console.log('created: ', this.title, this.subTitle, this.bgImage)
+      // this.setBgImage()
     },
 
-    data () {
-      return {
-        styleObject: {}
+    computed: {
+      backgroundImage: function () {
+        console.log('computedProp', this.bgImage)
+        return this.bgImage
       }
     },
 
     methods: {
       setBgImage: function () {
-        console.log('setBgImage', this.bgImage)
+        console.log('SubHero setBgImage: ', this.bgImage)
         this.styleObject = {
           'background-image': 'url(' + this.bgImage + ')',
           'border': '1px solid lime'
