@@ -3,7 +3,6 @@
     
     <sub-hero 
       v-bind:title="item.name" 
-      v-bind:sub-title="item.description" 
       v-bind:bg-image="item.photos[0].image_path"></sub-hero>
       
     <section class="section-padding">
@@ -31,15 +30,13 @@
                       <div class="portfolio-item-content-spc">
                           <h5 class="alt-title">Project details</h5>
                           <ul class="portfolio-item-content-detail list-none">
-                              <li>
-                                  <span class="text-bold">Tags :</span> {{item.tags}}
-                              </li>
-                              <li>
-                                  <span class="text-bold">Date Created :</span> {{item.launch_date}}
-                              </li>
-                              <li>
-                                  <span class="text-bold">Website :</span> {{item.url}}
-                              </li>
+                              <li><span class="text-bold">Tags:</span> {{item.tags}}</li>
+                              <li><span class="text-bold">Date Created:</span> {{item.launch_date}}</li>
+                              <li><span class="text-bold">Website:</span> {{item.url}}</li>
+                              <li><b>Technologies Used:</b> {{item.technologies}}</li>
+                              <li><b>Website Live?</b> {{item.published}}</li>
+                              <li><b>Solution:</b> {{item.solution}}</li>
+                              <li><b>Client Said:</b> {{item.comment}}</li>
                           </ul>
                       </div>
                       <div class="portfolio-item-content-spc">
