@@ -18,41 +18,39 @@
   }
 </script>
 
-<style type="scss" lang="scss" rel="stylesheet/scss" scoped>
+<style lang="scss">
   footer {
     background: rgba(59, 25, 25, 0.05);
     padding-top: 120px;
     padding-bottom: 120px;
 
     .social {
-      border: 3px solid lime;
       list-style: outside none none;
       padding: 0;
+
+      li {
+        display: inline-block;
+        list-style: outside none none;
+        margin: 0 8px;
+
+        a {
+          background: rgba(0,0,0,0.2);
+          color: rgba(255,255,255,0.6);
+          border: none;
+          display: block;
+          font-size: 24px;
+          height: 60px;
+          line-height: 60px;
+          text-align: center;
+          width: 60px;
+          transition: all 0.3s ease;
+          border-radius: 99px;
+          &:hover {
+            background: rgba(0,0,0,0.5);
+            color: rgba(255,255,255,0.8);
+          }
+        }
+      }
     }
-  }
-
-  .footer .social li {
-    display: inline-block;
-    list-style: outside none none;
-    margin: 0 8px;
-  }
-
-  .footer .social li a {
-    background: rgba(0,0,0,0.2);
-    color: rgba(255,255,255,0.6);
-    border: none;
-    display: block;
-    font-size: 24px;
-    height: 60px;
-    line-height: 60px;
-    text-align: center;
-    width: 60px;
-    transition: all 0.3s ease;
-    border-radius: 99px;
-  }
-
-  .footer .social li a:hover {
-    background: rgba(0,0,0,0.5);
-    color: rgba(255,255,255,0.8);
   }
 </style>
