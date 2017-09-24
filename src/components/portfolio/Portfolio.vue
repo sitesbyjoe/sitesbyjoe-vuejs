@@ -10,9 +10,7 @@
 
       <!-- Portfolio Grid -->
       <div class="container">
-        <h2>Another Heading</h2>
         <div class="rows portfolio-grid not-gallery-popup">
-          <h3>Yet Another Heading</h3>
 
           <!-- Portfolio Item -->
           <div class="portfolio-item" v-for="item in items">
