@@ -13,29 +13,6 @@
 
 <script>
   export default {
-    props: ['title', 'subTitle', 'bgImage'],
-
-    created: function () {
-      console.log('created: ', this.title, this.subTitle, this.bgImage)
-      // this.setBgImage()
-    },
-
-    computed: {
-      backgroundImage: function () {
-        console.log('computedProp', this.bgImage)
-        return this.bgImage
-      }
-    },
-
-    methods: {
-      setBgImage: function () {
-        console.log('SubHero setBgImage: ', this.bgImage)
-        this.styleObject = {
-          'background-image': 'url(' + this.bgImage + ')',
-          'border': '1px solid lime'
-        }
-      }
-    }
-
+    props: ['title', 'subTitle', 'bgImage']
   }
 </script>
