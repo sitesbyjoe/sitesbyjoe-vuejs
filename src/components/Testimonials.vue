@@ -1,5 +1,5 @@
 <template>
-  <section id="testimonials" class="section-padding bg-image pos-section">
+  <section id="testimonials" class="testimonials section-padding bg-image pos-section">
     <div class="container">
       <div style="text-align: center;">
         <div class="page-icon-sm dark"><i class="icon-quote"></i></div>
@@ -46,3 +46,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .testimonials {
+    background-color: rgba(0,0,0,0.1);
+  }
+</style>
