@@ -1,16 +1,25 @@
 <template>
   <div class="contact">
-    <h1>{{ msg }}</h1>
+
+    <sub-header v-bind:heading="heading"></sub-header>
+
+    <contact-form></contact-form>
   </div>
 </template>
   
 <script>
+import SubHeader from './common/SubHeader.vue'
+import ContactForm from './contact/ContactForm.vue'
+
 export default {
-  name: 'contact',
   data () {
     return {
-      msg: 'Contact'
+      heading: 'Contact'
     }
+  },
+  components: {
+    SubHeader,
+    ContactForm
   }
 }
 </script>
