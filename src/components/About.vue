@@ -1,15 +1,7 @@
 <template>
   <div class="about">
-    <section id="inner-intro" class="inner-intro bg-image overlay-dark40 dark-bg parallax parallax-background2" data-background-img="https://sitesbyjoe.com/assets/images/joe-face.jpg">
-      <div class="container">
-          <div class="intro-content">
-              <div class="intro-content-inner">
-                  <h1 class="">{{msg}}</h1>
-                  <h5 class="alt-title intro-sub-title">Everything you need to know about our Company</h5>
-              </div>
-          </div>
-      </div>
-    </section>
+
+    <sub-header heading="heading"></sub-header>
 
     <section class="section-padding">
         <div class="container">
@@ -162,18 +154,20 @@
 </template>
 
 <script>
+import SubHeader from './common/SubHeader.vue'
+
 export default {
-  name: 'about',
   data () {
     return {
-      msg: 'About Page'
+      heading: 'About Page'
     }
+  },
+  components: {
+    SubHeader
   }
 }
 </script>
 
-<style>
-  .hello {
-    background-color: lime;
-  }
+<style lang="scss" scoped>
+
 </style>
