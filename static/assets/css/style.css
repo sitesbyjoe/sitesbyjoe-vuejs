@@ -432,7 +432,7 @@ h3.alt-title {
 }
 
 h4.alt-title {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 h5.alt-title {
@@ -612,7 +612,7 @@ a {
 /* Button Style */
 /*------------------------------------------------------------------*/
 
-.btn, button {
+/*.btn, button {
     font-size: 12px;
     line-height: 1;
     font-weight: 600;
@@ -731,25 +731,25 @@ i.right {
         border-color: #17a697;
         color: #fff;
     }
-
+*/
 /*------------------------------------------------------------------*/
 /* Form Style */
 /*------------------------------------------------------------------*/
-form {
+/*form {
     position: relative;
-}
-
-button {
-    outline: none;
-}
-
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
-    cursor: pointer;
-    display: inline-block;
 }
 
 button, input, textarea, select {
     font-size: 12px;
+}*/
+
+button {
+  outline: none;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  display: inline-block;
 }
 
     input, input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="password"], input[type="radio"], input[type="checkbox"], textarea, select {
@@ -2888,11 +2888,11 @@ form .error {
 }
 
 .alt-icon-color {
-    color: #17a697 !important;
+    color: #923f3f !important;
 }
 
 .icon-color {
-    background-color: #17a697;
+    background-color: #923f3f;
     color: #fff;
 }
 
