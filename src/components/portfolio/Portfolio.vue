@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import SubHero from '@/components/SubHero.vue'
 
 export default {
@@ -56,7 +57,7 @@ export default {
   },
   created: function () {
     var api = 'https://sitesbyjoe.com/portfolio/api_list'
-    this.axios({
+    axios({
       method: 'get',
       url: api
     }).then((response) => {
