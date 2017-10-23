@@ -1,27 +1,27 @@
 <template>
   <!-- Header -->
-  <header id="header" class="header header-dark">
+  <header id="header" class="header header-dark header-prepare" v-bind:class="{ 'header-expanded' : isActive }">
     <div class="header-inner">
 
       <!-- Logo -->
       <div class="logo">
-        <router-link to="/"><b>Sites</b>byJoe</router-link>
+        <router-link to="/" v-on:click.native="handleLogoClick()"><b>Sites</b>byJoe</router-link>
       </div>
       <!-- End Logo -->
 
       <!-- Mobile Navbar Icon -->
-      <div class="nav-mobile nav-bar-icon">
+      <div class="nav-mobile nav-bar-icon" v-bind:class="{ 'active' : isActive }" v-on:click="toggleNav()">
         <span></span>
       </div>
       <!-- End Mobile Navbar Icon -->
 
       <!-- Navbar Navigation -->
-      <div class="nav-menu singlepage-nav">
+      <div class="nav-menu singlepage-nav" v-bind:class="{ 'active' : isActive }">
         <ul class="nav-menu-inner">
-          <li><router-link to="/about" v-on:click="test">About</router-link></li>
-          <li><router-link to="/portfolio" v-on:click="test">Portfolio</router-link></li>
-          <li><router-link to="/blog" v-on:click="test">Blog</router-link></li>
-          <li><router-link to="/contact" v-on:click="test">Contact</router-link></li>
+          <li><router-link to="/about" v-on:click.native="handleClick()">About</router-link></li>
+          <li><router-link to="/portfolio" v-on:click.native="handleClick()">Portfolio</router-link></li>
+          <li><router-link to="/blog" v-on:click.native="handleClick()">Blog</router-link></li>
+          <li><router-link to="/contact" v-on:click.native="handleClick()">Contact</router-link></li>
         </ul>
       </div>
       <!-- End Navbar Navigation -->
@@ -33,73 +33,98 @@
 
 <script>
   export default {
+    data () {
+      return {
+        isActive: false,
+        mobileNav: false,
+        breakPoint: 768
+      }
+    },
+    created: function () {
+      this.initNav()
+      window.addEventListener('resize', () => {
+        this.initNav()
+      })
+    },
     methods: {
-      test: function (e) {
-        console.log('click', e)
+      toggleNav: function () {
+        this.isActive = !this.isActive
+      },
+      handleClick: function () {
+        console.log('handleClick')
+        if (this.mobileNav && this.isActive) {
+          this.toggleNav()
+        }
+      },
+      handleLogoClick: function () {
+        if (this.isActive) {
+          this.handleClick()
+        }
+      },
+      setNavSize: function () {
+        console.log('setNavSize', window.innerWidth)
+        // mobile_menu.css(
+        //  "max-height", $(window).height() - $(".header").height() - 20 + "px"),
+        //  $(window).width() <= 1024 ? $(".header").addClass("mobile-device") : $(window).width() > 1024 && ($(".header").removeClass("mobile-device"))
+      },
+      initNav: function () {
+        console.log('initNav', window.innerWidth)
+        this.mobileNav = (window.innerWidth < this.breakPoint)
       }
     }
   }
 </script>
 
-<style scoped>
-  /*==========================================================================================================*/
-/* HEADER     ||---------------------------- */
-/*==========================================================================================================*/
-
-/*------------------------------------------------------------------*/
-/* Header Style */
-/*------------------------------------------------------------------*/
+<style lang="scss" scoped>
 .header {
-    position: absolute;
-    text-align: center;
-    top: 0px;
-    z-index: 1000;
-    color: #fff;
-    width: 100%;
-    height: 85px;
-    transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-    -o-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-    -moz-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-    -webkit-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-}
+  position: absolute;
+  text-align: center;
+  top: 0px;
+  z-index: 1000;
+  color: #fff;
+  width: 100%;
+  height: 85px;
+  transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
+  @media all and (max-width: 1024px) {
+    height: 58px;
+  }
 
-    .header.header-prepare, .header.header-light.header-prepare {
-        background-color: rgba(255, 255, 255, 0.95);
-        border-bottom: 1px solid #f0f0f0;
-    }
-
-    .header.header-dark.header-prepare {
-        /*background-color: rgba(34, 34, 34, 0.95);
-        border-bottom: 0px none;*/
-        background-color: #923f3f;
-        border: none;
-    }
-
-    .header.header-fixed {
-        display: block;
-        margin-top: 0 !important;
-        position: fixed;
-        height: 58px;
-    }
-
-.header-inner {
+  .header-inner {
     padding-left: 30px;
     padding-right: 30px;
     position: relative;
+    @media all and (max-width: 1024px) {
+      display: table;
+      width: 100%;
+    }
+
+    .logo a {
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      font-weight: 300;
+      transition: all 0.3s ease 0s;
+      @media all and (max-width: 1024px) {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        width: 100px;
+      }
+    }
+  }
 }
 
-.header .logo a {
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.25rem;
-    font-weight: 300;
+.header-prepare {
+  background-color: #923f3f;
+  border: none;
 }
 
-.header .logo a b {
-    font-weight: 900;
-}
+.header-fixed {
+  display: block;
+  margin-top: 0 !important;
+  position: fixed;
+  height: 58px;
 
-.header-fixed .logo a {
+  .logo a {
     margin-top: 15px;
     margin-bottom: 15px;
     transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
@@ -110,42 +135,24 @@
     text-transform: uppercase;
     letter-spacing: 0.25rem;
     font-weight: 300;
-}
+  }
 
-.header-fixed .logo a b {
-    font-weight: 900;
-}
-
-.header-fixed .nav-menu ul.nav-menu-inner > li > a {
+  .nav-menu ul.nav-menu-inner > li > a {
     padding-top: 24px;
     padding-bottom: 23px;
+  }
 }
 
-/*header Logo style*/
-.header.header-prepare .logo a img.logo-light,
-.header .logo a img.logo-dark {
-    opacity: 0;
+.header-expanded {
+  height: 100%;
+  background: #272931;
 }
 
-.header .logo a img.logo-light,
-.header.header-prepare .logo a img.logo-dark,
-.header.header-light .logo a img.logo-dark {
-    opacity: 1;
-}
 
-.header.header-dark.header-prepare .logo a img.logo-dark,
-.header.header-dark .logo a img.logo-dark {
-    opacity: 0;
-}
-
-.header.header-dark.header-prepare .logo a img.logo-light,
-.header.header-dark .logo a img.logo-light {
-    opacity: 1;
-}
-
+/*
 @media all and (min-width: 1025px) {
 
-    /*header nav style*/
+ 
     .header.header-prepare .nav-menu ul.nav-menu-inner > li > a {
         color: rgba(34,34,34,0.60);
     }
@@ -164,75 +171,42 @@
             color: rgba(255,255,255,1);
         }
 }
-
-@media all and (max-width: 1024px) {
-    .header {
-        height: 58px;
-    }
-
-    .header-inner {
-        padding-left: 30px;
-        padding-right: 30px;
-        position: relative;
-        display: table;
-        width: 100%;
-    }
-
-    .header .logo a {
-        margin-top: 15px;
-        margin-bottom: 15px;
-        width: 100px;
-        transition: all 0.3s ease 0s;
-        -o-transition: all 0.3s ease 0s;
-        -moz-transition: all 0.3s ease 0s;
-        -webkit-transition: all 0.3s ease 0s;
-    }
-}
-
-
+*/
 /*------------------------------------------------------------------*/
 /* Logo Style */
 /*------------------------------------------------------------------*/
 .logo {
-    float: left;
-    text-align: left;
-    display: inline-block;
-}
+  float: left;
+  text-align: left;
+  display: inline-block;
 
-    .logo a {
-        width: 100px;
-        display: block;
-        margin-top: 29px;
-        margin-bottom: 28px;
-        transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-        -o-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-        -moz-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-        -webkit-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-        position: relative;
-        color: #fff;
-        font-family: "Lato", sans-serif;
+  a {
+    width: 100px;
+    display: block;
+    margin-top: 29px;
+    margin-bottom: 28px;
+    transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
+    position: relative;
+    color: #fff;
+    font-family: "Lato", sans-serif;
+
+    img {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
     }
-
-        .logo a img {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-            -o-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-            -moz-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-            -webkit-transition: all 0.27s cubic-bezier(0, 0, 0.58, 1) 0s;
-        }
-
-
+  }
+}
 
 /*------------------------------------------------------------------*/
 /* Navigation Menu Style */
 /*------------------------------------------------------------------*/
 .nav-menu {
-    position: static;
-    float: right;
-    display: block;
+  position: static;
+  float: right;
+  display: block;
 }
 
     .nav-menu.active {
@@ -255,9 +229,6 @@
             color: rgba(255,255,255,0.60);
         }
 
-.header-light .nav-menu ul.nav-menu-inner > li > a {
-    color: rgba(34, 34, 34, 0.6);
-}
 
 
 
@@ -265,7 +236,7 @@
 .nav-menu ul.nav-menu-inner li a {
     font-family: inherit;
     display: block;
-    font-size: 11px;
+    font-size: 0.77rem;
     line-height: 1;
     font-weight: 400;
     text-transform: uppercase;
@@ -476,6 +447,10 @@ header.header-prepare .nav-bar-icon > span::after {
         width: 100%;
     }
 
+    .nav-menu ul.nav-menu-inner {
+      padding-top: 4rem;
+    }
+
     .nav-menu {
         position: static;
         left: 0;
@@ -483,9 +458,9 @@ header.header-prepare .nav-bar-icon > span::after {
         float: none;
         display: none;
         width: 100%;
-        background: rgba(34,34,34,0.85);
+        background: transparent;
         overflow-y: auto;
-        z-index: 999;
+        z-index: 998;
     }
 
     .nav-bar-icon, .nav-mobile.nav-bar-icon, .header-fixed .nav-bar-icon {
@@ -493,11 +468,13 @@ header.header-prepare .nav-bar-icon > span::after {
         float: right;
         margin-top: 21px;
         margin-bottom: 21px;
+        z-index: 999;
     }
 
     .nav-menu ul.nav-menu-inner li a, .header-fixed .nav-menu ul.nav-menu-inner li a {
-        padding: 15px 12px;
+        padding: 2rem 0;
         border-top: 1px solid #444;
+        text-align: center;
     }
 
 
