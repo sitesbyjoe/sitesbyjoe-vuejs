@@ -1,13 +1,13 @@
 <template>
   <div class="about">
 
-    <sub-header heading="heading"></sub-header>
+    <sub-header heading="About"></sub-header>
 
     <section class="section-padding">
         <div class="container">
-            <div class="rows text-center">
+            <!--div class="rows text-center">
                 <h1 class="mb-60">Showcase Services</h1>
-            </div>
+            </div>-->
             <div class="row">
                 <div class="col-md-6 mb-10">
                     <div class="content-box alt-left">
