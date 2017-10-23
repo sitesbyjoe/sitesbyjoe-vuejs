@@ -4,12 +4,12 @@ $(function () {
     $(document).ready(function () {
         init_scroll();
         int_introHeight();
-        stickHeader();
+        //stickHeader();
         int_nav_menu_height();
         int_SliderPluguns();
         init_wow_animation();
-        int_isotopPortfolio();
-        int_lightbox();
+        //int_isotopPortfolio();
+        //int_lightbox();
         int_Elements();
     });
 
@@ -25,13 +25,13 @@ $(function () {
 
     $(window).resize(function () {
         int_introHeight();
-        stickHeader();
+        //stickHeader();
         int_nav_menu_height();
         int_SliderPluguns();
     });
 
     $(window).scroll(function () {
-        stickHeader();
+        //stickHeader();
     });
 
     // ---------------------------------------------------------------------------------------------------------------------------->
@@ -90,6 +90,7 @@ $(function () {
     function stickHeader() {
         var scrolled = $(window).scrollTop();
         var windHeight = $(window).height();
+        /*
         if (scrolled > 120) {
             $('.header').addClass('header-prepare');
         } else {
@@ -101,12 +102,14 @@ $(function () {
         } else {
             $('.header').removeClass('header-fixed');
         }
+        */
     };
 
 
     // ----------------------------------------------------------------
     // Navigation Menu panel
     // ----------------------------------------------------------------
+    
     var mobile_menu_icon = $(".nav-mobile");
     var mobile_menu = $(".nav-menu");
 
@@ -114,7 +117,7 @@ $(function () {
     function int_nav_menu_height() {
         mobile_menu.css("max-height", $(window).height() - $(".header").height() - 20 + "px"), $(window).width() <= 1024 ? $(".header").addClass("mobile-device") : $(window).width() > 1024 && ($(".header").removeClass("mobile-device"))
     };
-
+    /*
     // Mobile menu toggle icon
     mobile_menu_icon.click(function () {
         if (!($(this).hasClass('active'))) {
@@ -126,6 +129,7 @@ $(function () {
             mobile_menu.removeClass('active');
         }
     });
+    */
 
 
     // Dropdown Sub menu
@@ -322,12 +326,6 @@ $(function () {
     }
 
     // ----------------------------------------------------------------
-    // Responsive Media Elements (video, iframe)
-    // ----------------------------------------------------------------
-    $(".video-fit, .audio-fit, .post-media").fitVids();
-
-
-    // ----------------------------------------------------------------
     // Isotope Portfolio Grid
     // ----------------------------------------------------------------
     function int_isotopPortfolio() {
@@ -355,7 +353,7 @@ $(function () {
 
 
         // bind filter button click
-        $('.portfolio-filter').on('click', '.categories', function () {
+        /*$('.portfolio-filter').on('click', '.categories', function () {
             var filterValue = $(this).attr('data-filter');
             $container.isotope({ filter: filterValue });
         });
@@ -368,7 +366,7 @@ $(function () {
                 $(this).addClass('active');
             });
 
-        });
+        });*/
     };
 
 
