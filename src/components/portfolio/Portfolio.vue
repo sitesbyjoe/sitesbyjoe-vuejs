@@ -1,10 +1,7 @@
 <template>
   <div class="portfolio">
-    
-    <sub-hero 
-      title="Portfolio" 
-      sub-title="Some stuff I made back in the day" 
-      bg-image="/static/assets/img/fj40-steering.jpg"></sub-hero>
+
+    <sub-header :heading="msg"></sub-header>
 
     <section class="section-padding">
 
@@ -45,10 +42,9 @@
 
 <script>
 import axios from 'axios'
-import SubHero from '@/components/SubHero.vue'
+import SubHeader from '@/components/common/SubHeader.vue'
 
 export default {
-  name: 'portfolio',
   data () {
     return {
       msg: 'Portfolio Main Page',
@@ -65,7 +61,7 @@ export default {
     })
   },
   components: {
-    SubHero
+    SubHeader
   }
 }
 </script>

@@ -1,10 +1,8 @@
 <template>
   <div class="portfolio-detail">
-    
-    <sub-hero 
-      v-bind:title="item.name" 
-      v-bind:bg-image="item.photos[0].image_path"></sub-hero>
-      
+
+    <sub-header :heading="'Portfolio: ' + item.name"></sub-header>
+
     <section class="section-padding">
       
       <!-- Portfolio Detail -->
@@ -56,11 +54,11 @@
 
 <script>
   import axios from 'axios'
-  import SubHero from '@/components/SubHero.vue'
+  import SubHeader from '@/components/common/SubHeader.vue'
 
   export default {
     components: {
-      SubHero
+      SubHeader
     },
 
     data () {
