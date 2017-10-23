@@ -1,7 +1,7 @@
 <template>
   <div class="contact">
 
-    <sub-header v-bind:heading="heading"></sub-header>
+    <sub-header heading="Contact"></sub-header>
 
     <contact-form></contact-form>
   </div>
