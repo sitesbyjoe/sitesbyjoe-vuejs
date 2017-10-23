@@ -16,7 +16,7 @@
   .subheader {
     background: #272931;
     color: #fff;
-    padding: 2rem 0;
+    padding: 5rem 0 2rem;
 
     h1 {
       color: #fff;
