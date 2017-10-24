@@ -55,6 +55,7 @@
         if (this.mobileNav && this.isActive) {
           this.toggleNav()
         }
+        window.scrollTo(0, 0)
       },
       handleLogoClick: function () {
         if (this.isActive) {
