@@ -1,5 +1,5 @@
 <template>
-  <section id="inner-intro" class="inner-intro bg-image overlay-dark40 dark-bg parallax parallax-background2" v-bind:style="'background-image: url(http://2017.sitesbyjoe.com/static/assets/img/fj40-steering.jpg); background-size:cover;'">
+  <section id="inner-intro" class="inner-intro bg-image overlay-dark40 dark-bg parallax parallax-background2" v-bind:style="'background: #262932 url(http://2017.sitesbyjoe.com/static/assets/img/design-pattern-dark.png); '">
     <div class="container">
       <div class="intro-content">
         <div class="intro-content-inner">
