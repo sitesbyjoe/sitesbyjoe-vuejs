@@ -5,9 +5,8 @@
 
     <section class="section-padding">
       <div class="container">
-        <div class="rows text-center">
-          <h2 class="mb-60">Over the years I've built it all for the web. These days I focus on:</h2>
-        </div>  
+        <h2 class="mb-60">Over the years I've built it all for the web. These days I focus on:</h2>
+ 
         <div class="row">
           <div class="col-md-6 mb-10">
             <div class="content-box alt-left">
