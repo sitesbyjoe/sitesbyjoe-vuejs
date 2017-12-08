@@ -37,7 +37,7 @@
       return {
         isActive: false,
         mobileNav: false,
-        breakPoint: 768
+        breakPoint: 1024
       }
     },
     created: function () {
@@ -50,26 +50,21 @@
       toggleNav: function () {
         this.isActive = !this.isActive
       },
+
       handleClick: function () {
-        console.log('handleClick')
         if (this.mobileNav && this.isActive) {
           this.toggleNav()
         }
         window.scrollTo(0, 0)
       },
+
       handleLogoClick: function () {
         if (this.isActive) {
           this.handleClick()
         }
       },
-      setNavSize: function () {
-        console.log('setNavSize', window.innerWidth)
-        // mobile_menu.css(
-        //  "max-height", $(window).height() - $(".header").height() - 20 + "px"),
-        //  $(window).width() <= 1024 ? $(".header").addClass("mobile-device") : $(window).width() > 1024 && ($(".header").removeClass("mobile-device"))
-      },
+
       initNav: function () {
-        console.log('initNav', window.innerWidth)
         this.mobileNav = (window.innerWidth < this.breakPoint)
       }
     }
