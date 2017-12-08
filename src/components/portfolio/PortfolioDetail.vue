@@ -10,6 +10,9 @@
         <div class="row">
           <!-- Poftfolio Item -->
           <div class="col-md-7">
+
+            <!--<div class="content" id="content6" data-stellar-background-ratio="0.5"></div>-->
+
             <div class="portfolio-image-wrap" v-for="photo in item.photos" v-if="photo.image_path !== item.photos[0].image_path">
               <p><img v-bind:src="'https://sitesbyjoe.com/' + photo.image_path" alt="image" width="100%" /></p>
             </div>
@@ -26,16 +29,16 @@
                 <div class="portfolio-item-content-spc">
                   <h5 class="alt-title">Project Details</h5>
                   <ul class="portfolio-item-content-detail list-none">
-                    <li v-if="item.tags"><span class="text-bold">Tags:</span> {{item.tags}}</li>
+                    <!--<li v-if="item.tags"><span class="text-bold">Tags:</span> {{item.tags}}</li>-->
                     <li v-if="item.launch_date"><span class="text-bold">Date Created:</span> {{item.launch_date}}</li>
-                    <li v-if="item.url"><span class="text-bold">Website:</span> {{item.url}}</li>
                     <li v-if="item.technologies"><b>Technologies Used:</b> {{item.technologies}}</li>
+                    <li v-if="item.goals"><b>Goals:</b> {{item.goals}}</li>
                     <li v-if="item.solution"><b>Solution:</b> {{item.solution}}</li>
                     <li v-if="item.comment"><b>Client Said:</b> <i>"{{item.comment}}"</i></li>
                   </ul>
                 </div>
-                <div class="portfolio-item-content-spc" v-if="item.published">
-                  <a v-bind:href="item.url" target="_blank" class="btn btn-black-outline btn-lg">Launch Website<i class="fa fa-external-link right"></i></a>
+                <div class="portfolio-item-content-spc" v-if="item.published == 1">
+                  <a v-bind:href="item.url" target="_blank" class="btn btn-primary btn-lg">Launch Website<i class="fa fa-external-link right"></i></a>
                 </div>
               </div>
             </div>
@@ -78,12 +81,22 @@
         method: 'get',
         url: api
       }).then((response) => {
-        console.log('api call done', response.data, this)
         this.item = response.data
-        // console.log(this)
-        // console.log('THIS', this, 'THIS>ITEM', this.item)
-        // console.log('PortfolioDetail this.bgImage just set', this.item.photos[0].image_path)
       })
     }
   }
 </script>
+
+<style>
+  .content {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position-y: 0;
+    height: 350px;
+  }
+  #content6 {
+    background-image: url("https://sitesbyjoe.com/uploads/portfolio/79-c-cups-homepage.jpg");
+    border: solid #000 10px;
+    border-radius: 6px;
+  }
+</style>
