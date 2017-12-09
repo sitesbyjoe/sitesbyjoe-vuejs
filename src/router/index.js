@@ -4,7 +4,8 @@ import Hello from '@/components/Hello'
 import About from '@/components/About'
 import Portfolio from '@/components/portfolio/Portfolio'
 import PortfolioDetail from '@/components/portfolio/PortfolioDetail'
-import Blog from '@/components/Blog'
+import Blog from '@/components/blog/Blog'
+import BlogDetail from '@/components/blog/BlogDetail'
 import Contact from '@/components/Contact'
 
 Vue.use(Router)
@@ -34,6 +35,10 @@ export default new Router({
       path: '/blog',
       name: 'Blog',
       component: Blog
+    },
+    {
+      path: '/blog/detail/:year/:month/:day/:slug',
+      component: BlogDetail
     },
     {
       path: '/contact',
