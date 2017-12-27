@@ -23,6 +23,11 @@
                   </p>
                 </div>
 
+                <div class="comments">
+                  <vue-disqus disqus-developer="1" shortname="2017-sitesbyjoe-com" :identifier="'sitebyjoe_post_id_' + post.id" url="javascript:window.location.href;"></vue-disqus>
+                </div>
+
+
                 <!--<div class="post-meta">
                   <span>by <a>John Doe</a>,</span>
                   <span class="post-date">06 Jan 2016</span>
@@ -85,6 +90,8 @@
                   </div>
                 </div>-->
 
+                      
+
                     </div>
                     <!-- End Post -->
 
@@ -105,6 +112,7 @@
     
 <script>
 import axios from 'axios'
+import VueDisqus from 'vue-disqus/VueDisqus.vue'
 import SubHeader from '../common/SubHeader.vue'
 
 export default {
@@ -126,6 +134,7 @@ export default {
   },
 
   components: {
+    VueDisqus,
     SubHeader
   }
 }
