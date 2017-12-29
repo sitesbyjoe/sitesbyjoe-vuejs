@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="comments">
-                  <vue-disqus disqus-developer="1" shortname="2017-sitesbyjoe-com" :identifier="'sitebyjoe_post_id_' + post.id" url="javascript:window.location.href;"></vue-disqus>
+                  <vue-disqus disqus-developer="1" :shortname="disqus.shortname" :identifier="disqus.identifier" :url="disqus.url"></vue-disqus>
                 </div>
 
 
@@ -119,7 +119,12 @@ export default {
   data () {
     return {
       msg: 'Blog',
-      posts: []
+      posts: [],
+      disqus: {
+        shortname: '2017-sitesbyjoe-com',
+        identifier: '',
+        url: ''
+      }
     }
   },
 
@@ -130,6 +135,10 @@ export default {
       url: api
     }).then((response) => {
       this.posts = response.data
+      if (this.posts.length > 0) {
+        this.disqus.identifier = 'sitesbyjoe_post_id_' + this.posts[0].id
+        this.disqus.url = 'http://2017.sitesbyjoe.com/blog/detail/' + this.$route.params.year + '/' + this.$route.params.month + '/' + this.$route.params.day + '/' + this.$route.params.slug
+      }
     })
   },
 
@@ -157,8 +166,8 @@ export default {
         width: 100%;
     }
 
-.post-author-panel {
-}
+/*.post-author-panel {
+}*/
 
 .post-author-hadding {
     padding: 8px 20px;
@@ -166,9 +175,9 @@ export default {
     background: #eee;
 }
 
-    .post-author-hadding a {
-        color: #17a697;
-    }
+.post-author-hadding a {
+    color: #17a697;
+}
 
 .post-author-body {
     padding: 20px;
@@ -176,9 +185,9 @@ export default {
     display: table;
 }
 
-    .post-author-body p {
-        margin-bottom: 0px;
-    }
+.post-author-body p {
+    margin-bottom: 0px;
+}
 
 .post-author-hadding h1,
 .post-author-hadding h2,
