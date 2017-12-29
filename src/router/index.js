@@ -6,6 +6,7 @@ import Portfolio from '@/components/portfolio/Portfolio'
 import PortfolioDetail from '@/components/portfolio/PortfolioDetail'
 import Blog from '@/components/blog/Blog'
 import BlogDetail from '@/components/blog/BlogDetail'
+import PageList from '@/components/pages/PageList'
 import PageDetail from '@/components/pages/PageDetail'
 import Contact from '@/components/Contact'
 
@@ -40,6 +41,10 @@ export default new Router({
     {
       path: '/blog/detail/:year/:month/:day/:slug',
       component: BlogDetail
+    },
+    {
+      path: '/pages',
+      component: PageList
     },
     {
       path: '/pages/:slug',
