@@ -18,7 +18,7 @@
       <!-- Navbar Navigation -->
       <div class="nav-menu singlepage-nav" v-bind:class="{ 'active' : isActive }">
         <ul class="nav-menu-inner">
-          <li><router-link to="/about" v-on:click.native="handleClick()">About</router-link></li>
+          <li><router-link to="/pages/about" v-on:click.native="handleClick()">About</router-link></li>
           <li><router-link to="/portfolio" v-on:click.native="handleClick()">Portfolio</router-link></li>
           <li><router-link to="/blog" v-on:click.native="handleClick()">Blog</router-link></li>
           <li><router-link to="/contact" v-on:click.native="handleClick()">Contact</router-link></li>
