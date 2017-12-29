@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+
+      <p>I'm sorry, but I'm no longer accepting any new web design clients - I'm honored you considered me though.
+
+      <p>If the above isn't enough to stop you, and you'd REALLY like to get ahold of me, you can fill in the little form below:</p>
     
     <form v-show="!success" v-on:submit.prevent="send">
       <div class="form-group" v-bind:class="{ 'has-danger': errors.has('name') }">
